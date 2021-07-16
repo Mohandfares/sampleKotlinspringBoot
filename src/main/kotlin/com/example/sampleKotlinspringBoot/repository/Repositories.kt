@@ -1,7 +1,7 @@
 package com.example.sampleKotlinspringBoot.repository
 
 import com.example.sampleKotlinspringBoot.bo.Article
-import com.example.sampleKotlinspringBoot.bo.User
+import com.example.sampleKotlinspringBoot.bo.Author
 import org.springframework.data.repository.CrudRepository
 
 interface ArticleRepository : CrudRepository<Article, Long> {
@@ -9,6 +9,6 @@ interface ArticleRepository : CrudRepository<Article, Long> {
     fun findAllByOrderByAddedAtDesc(): Iterable<Article>
 }
 
-interface UserRepository : CrudRepository<User, Long> {
-    fun findByLogin(login: String): User?
+interface UserRepository : CrudRepository<Author, Long> {
+    fun findByLogin(login: String): Author?
 }

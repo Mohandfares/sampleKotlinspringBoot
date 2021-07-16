@@ -1,7 +1,7 @@
 package com.example.sampleKotlinspringBoot
 
 import com.example.sampleKotlinspringBoot.bo.Article
-import com.example.sampleKotlinspringBoot.bo.User
+import com.example.sampleKotlinspringBoot.bo.Author
 import com.example.sampleKotlinspringBoot.repository.ArticleRepository
 import com.example.sampleKotlinspringBoot.repository.UserRepository
 import org.springframework.boot.ApplicationRunner
@@ -11,12 +11,12 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class BlogConfiguration {
 
-    @Bean
+    /*@Bean
     fun databaseInitializer(
         userRepository: UserRepository,
         articleRepository: ArticleRepository
     ) = ApplicationRunner {
-        val smaldini = userRepository.save(User("smaldini", "Stéphane", "Maldini"))
+        val smaldini = userRepository.save(Author("smaldini", "Stéphane", "Maldini"))
         articleRepository.save(Article(
             title = "Reactor Bismuth is out",
             headline = "Lorem ipsum",
@@ -29,5 +29,5 @@ class BlogConfiguration {
             content = "dolor sit amet",
             author = smaldini
         ))
-    }
+    }*/
 }

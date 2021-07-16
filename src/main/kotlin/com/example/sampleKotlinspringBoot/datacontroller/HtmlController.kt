@@ -3,7 +3,7 @@ package com.example.sampleKotlinspringBoot.datacontroller
 import com.example.sampleKotlinspringBoot.BlogProperties
 import com.example.sampleKotlinspringBoot.Ext.format
 import com.example.sampleKotlinspringBoot.bo.Article
-import com.example.sampleKotlinspringBoot.bo.User
+import com.example.sampleKotlinspringBoot.bo.Author
 import com.example.sampleKotlinspringBoot.repository.ArticleRepository
 import com.example.sampleKotlinspringBoot.repository.UserRepository
 import org.springframework.http.HttpStatus
@@ -40,11 +40,11 @@ class HtmlController(
     )
 
     data class RenderedArticle(
-        val slug: String,
-        val title: String,
-        val headline: String,
-        val content: String,
-        val author: User,
-        val addedAt: String)
+            val slug: String,
+            val title: String,
+            val headline: String,
+            val content: String,
+            val author: Author,
+            val addedAt: String)
 
 }

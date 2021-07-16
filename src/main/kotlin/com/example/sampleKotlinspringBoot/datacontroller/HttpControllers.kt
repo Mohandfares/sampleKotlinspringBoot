@@ -1,9 +1,7 @@
 package com.example.sampleKotlinspringBoot.datacontroller
 
 import com.example.sampleKotlinspringBoot.bo.Article
-import com.example.sampleKotlinspringBoot.bo.User
-import com.example.sampleKotlinspringBoot.repository.ArticleRepository
-import com.example.sampleKotlinspringBoot.repository.UserRepository
+import com.example.sampleKotlinspringBoot.bo.Author
 import com.example.sampleKotlinspringBoot.service.IArticleService
 import com.example.sampleKotlinspringBoot.service.IUserService
 import org.springframework.beans.factory.annotation.Autowired
@@ -56,14 +54,14 @@ class UserController {
         repository.findByLogin(login)
 
     @PostMapping("/save")
-    fun save(@RequestBody user: User): User =
+    fun save(@RequestBody user: Author): Author =
         repository.save(user)
 
     @PutMapping("/update/{id}")
     fun update(
         @PathVariable id: Long,
-        @RequestBody user: User
-    ): User = repository.update(id,user)
+        @RequestBody user: Author
+    ): Author = repository.update(id,user)
 
     @DeleteMapping("/delete/{id}")
     fun delete(@PathVariable id: Long): String =

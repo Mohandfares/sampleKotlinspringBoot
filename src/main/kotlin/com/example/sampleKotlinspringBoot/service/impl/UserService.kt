@@ -1,6 +1,6 @@
 package com.example.sampleKotlinspringBoot.service.impl
 
-import com.example.sampleKotlinspringBoot.bo.User
+import com.example.sampleKotlinspringBoot.bo.Author
 import com.example.sampleKotlinspringBoot.repository.UserRepository
 import com.example.sampleKotlinspringBoot.service.IUserService
 import org.springframework.http.HttpStatus
@@ -12,10 +12,10 @@ class UserService(
     private val repository: UserRepository
 ) : IUserService {
 
-    override fun save(t: User): User =
+    override fun save(t: Author): Author =
             repository.save(t)
 
-    override fun update(id: Long, t: User): User {
+    override fun update(id: Long, t: Author): Author {
         if (repository.existsById(id)) {
             return repository.save(t)
         } else {
@@ -32,9 +32,9 @@ class UserService(
         }
     }
 
-    override fun findAll(): List<User> =
+    override fun findAll(): List<Author> =
             repository.findAll().toList()
 
-    override fun findByLogin(login: String): User? =
+    override fun findByLogin(login: String): Author? =
             repository.findByLogin(login) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist")
 }
