@@ -29,8 +29,8 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http.httpBasic().and().authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/api/article/").hasAnyRole()
-            .antMatchers(HttpMethod.GET, "/api/article/{slug}").hasAnyRole()
+            .antMatchers(HttpMethod.GET, "/api/article/").hasRole("ADMIN")
+            .antMatchers(HttpMethod.GET, "/api/article/{slug}").hasRole("ADMIN")
             .antMatchers(HttpMethod.GET, "/api/user/").hasRole("ADMIN")
             .antMatchers(HttpMethod.GET, "/api/user/{login}").hasRole("ADMIN")
             .and()

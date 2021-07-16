@@ -4,13 +4,19 @@ import com.example.sampleKotlinspringBoot.bo.Article
 import com.example.sampleKotlinspringBoot.bo.User
 import com.example.sampleKotlinspringBoot.repository.ArticleRepository
 import com.example.sampleKotlinspringBoot.repository.UserRepository
+import com.example.sampleKotlinspringBoot.service.IArticleService
+import com.example.sampleKotlinspringBoot.service.IUserService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/api/article")
-class ArticleController(private val repository: ArticleRepository) {
+class ArticleController {
+
+    @Autowired
+    lateinit var repository: IArticleService
 
     @GetMapping("/")
     fun findAll() = repository.findAllByOrderByAddedAtDesc()
@@ -27,35 +33,27 @@ class ArticleController(private val repository: ArticleRepository) {
     fun update(
         @PathVariable id: Long,
         @RequestBody article: Article
-    ): Article {
-        if (repository.existsById(id)) {
-            return repository.save(article)
-        } else {
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "This id article does not exist")
-        }
-    }
+    ): Article = repository.update(id,article)
+
 
     @DeleteMapping("/delete/{id}")
-    fun delete(@PathVariable id: Long): String {
-        return if (repository.existsById(id)) {
-            repository.deleteById(id)
-            "Delete success"
-        } else {
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "This id article does not exist")
-        }
-    }
+    fun delete(@PathVariable id: Long): String =
+            repository.delete(id)
 }
 
 @RestController
 @RequestMapping("/api/user")
-class UserController(private val repository: UserRepository) {
+class UserController {
+
+    @Autowired
+    lateinit var repository: IUserService
 
     @GetMapping("/")
     fun findAll() = repository.findAll()
 
     @GetMapping("/{login}")
     fun findOne(@PathVariable login: String) =
-        repository.findByLogin(login) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist")
+        repository.findByLogin(login)
 
     @PostMapping("/save")
     fun save(@RequestBody user: User): User =
@@ -65,21 +63,9 @@ class UserController(private val repository: UserRepository) {
     fun update(
         @PathVariable id: Long,
         @RequestBody user: User
-    ): User {
-        if (repository.existsById(id)) {
-            return repository.save(user)
-        } else {
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "This id user does not exist")
-        }
-    }
+    ): User = repository.update(id,user)
 
     @DeleteMapping("/delete/{id}")
-    fun delete(@PathVariable id: Long): String {
-        return if (repository.existsById(id)) {
-            repository.deleteById(id)
-            "Delete success"
-        } else {
-            throw ResponseStatusException(HttpStatus.NOT_FOUND, "This id user does not exist")
-        }
-    }
+    fun delete(@PathVariable id: Long): String =
+            repository.delete(id)
 }
