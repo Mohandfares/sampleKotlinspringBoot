@@ -1,16 +1,16 @@
 package com.example.sampleKotlinspringBoot.service.impl
 
 import com.example.sampleKotlinspringBoot.bo.Author
-import com.example.sampleKotlinspringBoot.repository.UserRepository
-import com.example.sampleKotlinspringBoot.service.IUserService
+import com.example.sampleKotlinspringBoot.repository.AuthorRepository
+import com.example.sampleKotlinspringBoot.service.IAuthorService
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Repository
 import org.springframework.web.server.ResponseStatusException
 
 @Repository
-class UserService(
-    private val repository: UserRepository
-) : IUserService {
+class AuthorService(
+    private val repository: AuthorRepository
+) : IAuthorService {
 
     override fun save(t: Author): Author =
             repository.save(t)

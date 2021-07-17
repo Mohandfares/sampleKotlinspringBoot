@@ -1,11 +1,6 @@
 package com.example.sampleKotlinspringBoot
 
-import com.example.sampleKotlinspringBoot.bo.Article
-import com.example.sampleKotlinspringBoot.bo.Author
-import com.example.sampleKotlinspringBoot.repository.ArticleRepository
-import com.example.sampleKotlinspringBoot.repository.UserRepository
-import org.springframework.boot.ApplicationRunner
-import org.springframework.context.annotation.Bean
+
 import org.springframework.context.annotation.Configuration
 
 @Configuration

@@ -3,7 +3,7 @@ package com.example.sampleKotlinspringBoot.datacontroller
 import com.example.sampleKotlinspringBoot.bo.Article
 import com.example.sampleKotlinspringBoot.bo.Author
 import com.example.sampleKotlinspringBoot.service.IArticleService
-import com.example.sampleKotlinspringBoot.service.IUserService
+import com.example.sampleKotlinspringBoot.service.IAuthorService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -44,7 +44,7 @@ class ArticleController {
 class UserController {
 
     @Autowired
-    lateinit var repository: IUserService
+    lateinit var repository: IAuthorService
 
     @GetMapping("/")
     fun findAll() = repository.findAll()
