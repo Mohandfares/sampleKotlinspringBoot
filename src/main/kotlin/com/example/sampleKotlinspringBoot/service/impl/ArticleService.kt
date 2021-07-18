@@ -1,6 +1,7 @@
 package com.example.sampleKotlinspringBoot.service.impl
 
 import com.example.sampleKotlinspringBoot.bo.Article
+import com.example.sampleKotlinspringBoot.bo.Author
 import com.example.sampleKotlinspringBoot.repository.ArticleRepository
 import com.example.sampleKotlinspringBoot.service.IArticleService
 import org.springframework.http.HttpStatus
@@ -40,4 +41,9 @@ class ArticleService(
 
     override fun findAllByOrderByAddedAtDesc(): Iterable<Article> =
             repository.findAllByOrderByAddedAtDesc()
+
+    override fun findByAuthor(idAuthor: Long): Iterable<Article> {
+        val author = Author("","","","",idAuthor)
+        return repository.findByAuthor(author)
+    }
 }

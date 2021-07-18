@@ -23,6 +23,10 @@ class ArticleController {
     fun findOne(@PathVariable slug: String) =
         repository.findBySlug(slug)
 
+    @GetMapping("/articlesByUser/{slug}")
+    fun findByAuthor(@PathVariable idAuthor: Long) =
+        repository.findByAuthor(idAuthor)
+
     @PostMapping("/save")
     fun save(@RequestBody article: Article): Article =
             repository.save(article)
