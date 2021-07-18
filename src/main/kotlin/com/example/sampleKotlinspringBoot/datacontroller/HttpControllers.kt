@@ -23,7 +23,7 @@ class ArticleController {
     fun findOne(@PathVariable slug: String) =
         repository.findBySlug(slug)
 
-    @GetMapping("/articlesByUser/{slug}")
+    @GetMapping("/articlesByUser/{idAuthor}")
     fun findByAuthor(@PathVariable idAuthor: Long) =
         repository.findByAuthor(idAuthor)
 
