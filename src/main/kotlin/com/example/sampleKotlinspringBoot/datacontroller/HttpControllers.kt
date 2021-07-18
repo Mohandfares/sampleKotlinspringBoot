@@ -21,7 +21,7 @@ class ArticleController {
 
     @GetMapping("/{slug}")
     fun findOne(@PathVariable slug: String) =
-        repository.findBySlug(slug) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
+        repository.findBySlug(slug)
 
     @PostMapping("/save")
     fun save(@RequestBody article: Article): Article =

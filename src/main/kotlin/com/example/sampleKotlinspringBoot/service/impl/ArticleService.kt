@@ -36,7 +36,7 @@ class ArticleService(
             repository.findAll().toList()
 
     override fun findBySlug(slug: String): Article? =
-            repository.findBySlug(slug)
+            repository.findBySlug(slug) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article does not exist")
 
     override fun findAllByOrderByAddedAtDesc(): Iterable<Article> =
             repository.findAllByOrderByAddedAtDesc()
