@@ -2,9 +2,11 @@ package com.example.sampleKotlinspringBoot.datacontroller
 
 import com.example.sampleKotlinspringBoot.bo.Article
 import com.example.sampleKotlinspringBoot.bo.Author
+import com.example.sampleKotlinspringBoot.repository.AuthorJpaRepository
 import com.example.sampleKotlinspringBoot.service.IArticleService
 import com.example.sampleKotlinspringBoot.service.IAuthorService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
@@ -44,8 +46,8 @@ class ArticleController {
 }
 
 @RestController
-@RequestMapping("/api/user")
-class UserController {
+@RequestMapping("/api/author")
+class AuthorController {
 
     @Autowired
     lateinit var repository: IAuthorService
@@ -70,4 +72,13 @@ class UserController {
     @DeleteMapping("/delete/{id}")
     fun delete(@PathVariable id: Long): String =
             repository.delete(id)
+}
+
+@RestController
+@RequestMapping("/api/authorjpa")
+class AuthorJpaController(val repository: AuthorJpaRepository) {
+
+    @GetMapping("/{login}")
+    fun findAllByLogin(@PathVariable login: String): List<Author> =
+        repository.findAllByLogin(login)
 }
